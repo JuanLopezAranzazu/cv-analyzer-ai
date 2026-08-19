@@ -8,7 +8,7 @@ con una oferta laboral, palabras clave faltantes y recomendaciones.
 ## Instalación
 
 ```bash
-npm install
+pnpm install
 cp .env.example .env.local
 ```
 
@@ -21,7 +21,7 @@ GROQ_API_KEY=gsk_...
 ## Ejecutar en desarrollo
 
 ```bash
-npm run dev
+pnpm dev
 ```
 
 Abre http://localhost:3000
