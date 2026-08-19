@@ -1,21 +1,40 @@
-# Next.js template
+# Escrutinio — Analizador de CV con IA
 
-This is a Next.js template with shadcn/ui.
+App de Next.js 14 (App Router) + TypeScript + shadcn/ui + Tailwind CSS que usa
+**Groq** (modelo `openai/gpt-oss-120b`) para analizar hojas de vida:
+habilidades, experiencia, tecnologías, fortalezas/debilidades, compatibilidad
+con una oferta laboral, palabras clave faltantes y recomendaciones.
 
-## Adding components
-
-To add components to your app, run the following command:
+## Instalación
 
 ```bash
-npx shadcn@latest add button
+pnpm install
+cp .env.example .env.local
 ```
 
-This will place the ui components in the `components` directory.
+Edita `.env.local` y pon tu API key de Groq (gratis en https://console.groq.com/keys):
 
-## Using components
-
-To use the components in your app, import them as follows:
-
-```tsx
-import { Button } from "@/components/ui/button";
 ```
+GROQ_API_KEY=gsk_...
+```
+
+## Ejecutar en desarrollo
+
+```bash
+pnpm dev
+```
+
+Abre http://localhost:3000
+
+## Cómo funciona
+
+1. El usuario sube su CV (`PDF`, `DOCX` o `TXT`) mediante drag & drop.
+2. Opcionalmente pega la descripción de una oferta laboral.
+3. `POST /api/analyze` extrae el texto del archivo (`pdf-parse` / `mammoth`)
+   y lo envía a Groq con un prompt que fuerza una respuesta JSON estructurada
+   (`response_format: json_object`).
+4. El resultado se tipa con la interfaz `CvAnalysis` (`lib/groq.ts`) y se
+   renderiza en tabs: Habilidades, Fortalezas/Debilidades y Recomendaciones,
+   más un panel de compatibilidad con anillo de puntaje y palabras clave
+   faltantes cuando se proporcionó una oferta.
+
