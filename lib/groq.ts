@@ -48,7 +48,7 @@ export async function analyzeCv(
     : `HOJA DE VIDA:\n"""\n${cvText}\n"""\n\nAnaliza el CV. No se proporcionó oferta laboral, así que "compatibility" debe ser null.`
 
   const completion = await groq.chat.completions.create({
-    model: "llama-3.3-70b-versatile",
+    model: "openai/gpt-oss-120b",
     temperature: 0.3,
     max_tokens: 2000,
     response_format: { type: "json_object" },

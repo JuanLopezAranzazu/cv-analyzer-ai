@@ -6,6 +6,7 @@ import { AnalysisResult } from "@/components/analysis-result"
 import { Button } from "@/components/ui/button"
 import { Textarea } from "@/components/ui/textarea"
 import { Label } from "@/components/ui/label"
+import { ThemeToggle } from "@/components/theme-toggle"
 import { CvAnalysis } from "@/lib/groq"
 import { Loader2, ScanSearch } from "lucide-react"
 
@@ -45,18 +46,21 @@ export default function Home() {
 
   return (
     <main className="mx-auto min-h-screen max-w-3xl px-6 py-16">
-      <header className="mb-12 space-y-3">
-        <p className="font-mono text-xs tracking-[0.2em] text-primary uppercase">
-          Escrutinio · análisis de CV con IA
-        </p>
-        <h1 className="font-display text-4xl leading-tight font-medium italic sm:text-5xl">
-          Una lectura honesta de tu hoja de vida.
-        </h1>
-        <p className="max-w-xl text-muted-foreground">
-          Sube tu CV y, si quieres, la oferta a la que aplicas. Llama, corriendo
-          en Groq, lo revisa como lo haría un reclutador exigente: habilidades,
-          huecos y qué palabras clave te faltan.
-        </p>
+      <header className="mb-12 flex items-start justify-between gap-4">
+        <div className="space-y-3">
+          <p className="font-mono text-xs tracking-[0.2em] text-primary uppercase">
+            Escrutinio · análisis de CV con IA
+          </p>
+          <h1 className="font-display text-4xl leading-tight font-medium italic sm:text-5xl">
+            Una lectura honesta de tu hoja de vida.
+          </h1>
+          <p className="max-w-xl text-muted-foreground">
+            Sube tu CV y, si quieres, la oferta a la que aplicas. Llama,
+            corriendo en Groq, lo revisa como lo haría un reclutador exigente:
+            habilidades, huecos y qué palabras clave te faltan.
+          </p>
+        </div>
+        <ThemeToggle />
       </header>
 
       <div className="space-y-6">
